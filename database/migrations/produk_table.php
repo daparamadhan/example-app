@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('produks', function (Blueprint $table) {
+            $table->id('id_produk');
+            $table->string('nama_produk'); // Contoh: REG, ONS, SDS
+            $table->text('deskripsi');
+            $table->integer('estimasi_hari');
+            $table->decimal('harga_per_kg', 10, 2); // Harga dengan 2 digit desimal
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('produks');
     }
 };
